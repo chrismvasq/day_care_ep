@@ -1,0 +1,58 @@
+---
+title: "Daycare Centers in El Paso Texas"
+output: html_document
+---
+
+This project is aimed at having an easily accessable place for parents to find daycare centers and see the deficiencies found during inspections.
+
+The only extra folder needed is a 'data' subfolder. 
+
+Data is gathered from data.texas.gov and combined two datasets[^1]:
+
+[DFPS CCL Daycare and Residential Operations Data](https://data.texas.gov/Social-Services/DFPS-CCL-Daycare-and-Residential-Operations-Data/bc5r-88dy) 
+
+This dataset contains all the basic information for each daycare center. In this dataset the Operation_ID column is what ties it to the second dataset.
+
+[DFPS CCL Inspection Investigation Assessment Data](https://data.texas.gov/Social-Services/DFPS-CCL-Inspection-Investigation-Assessment-Data/m5q4-3y3d) 
+
+This dataset contains information about the results of inspections with detailed notes of any deficiencies found. 
+
+## Packages
+The following packages are used:
+
+* Leaflet - development 
+  + This is the maping package. 
+* Leaflet.extras - developement. 
+  + This is some extra plugins for Leaflet not included in the main package.
+* Dplyr
+  + This is used for the %>% function to work. (I think)
+
+To install the developement packages run the following code. 
+
+```{r}
+devtools::install_github('rstudio/leaflet')
+devtools::install_github('bhaskarvk/leaflet.extras')
+```
+
+
+Install the development versions of Leaflet for R and leaflet.extras. This is just to ensure that we have the most up-to-date plugins since Leaflet for R does not include all the plugins for Leaflet. 
+
+
+To download the data used run the following code. Using the URL ensures that the data is current.
+
+```{r}
+URL <- "https://data.texas.gov/api/views/bc5r-88dy/rows.csv?accessType=DOWNLOAD"
+download.file(URL, destfile = "./data/operation.csv", method="curl")
+rm(URL)
+
+URL <- "https://data.texas.gov/api/views/m5q4-3y3d/rows.csv?accessType=DOWNLOAD"
+download.file(URL, destfile = "./data/investigation.csv", method="curl")
+rm(URL)
+```
+
+
+Now that we have the files in our
+
+
+
+[^1]: The data dictionaries which further describe the data can be found in the links as well. 
