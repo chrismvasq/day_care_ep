@@ -32,7 +32,7 @@ origAddress <- read.csv("./data/elpaso.csv", stringsAsFactors = FALSE)
 # Initialize the data frame
 geocoded <- data.frame(stringsAsFactors = FALSE)
 # Register API key
-register_google(key = "AIzaSyDJa2iaBFZMgFKrUMuHBM5g4WklLLkAqUY")
+register_google(key = "XXXXX")
 # Loop through the addresses to get the latitude and longitude of each address and add it to the
 # origAddress data frame in new columns lat and lon
 for(i in 1:nrow(origAddress))
@@ -73,7 +73,8 @@ icons <- awesomeIcons(
   library = 'fa',
   markerColor = getColor(df)
 )
-# Create function for color legend. If there's a way to avoid doing this and just using getColor I'd be happy to know .
+# Create function for color legend. 
+#If there's a way to avoid doing this and just using getColor I'd be happy to know .
 pal <- colorBin(c("green", "orange", "red"), domain = df$DEFICIENCY_HIGH, 3, pretty = FALSE)
 
 heatPlugin <- htmlDependency("Leaflet.heat", "99.99.99",
